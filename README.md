@@ -12,7 +12,7 @@
 - 📱 +91 9821078067
 - 🐙 [github.com/nikhilpahujaa](https://github.com/nikhilpahujaa)
 - 💼 [linkedin.com/in/nikhilpahujaa](https://www.linkedin.com/in/nikhilpahujaa)
-- 🌐 [pahuja.vercel.app](https://pahuja.vercel.app/)
+- 🌐 [nikportfolio.vercel.app](https://nikportfolio.vercel.app/)
 
 ---
 
