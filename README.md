@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <a href="https://nikportfolio.vercel.app" target="_blank">
+  <a href="https://nikportfoliooo.vercel.app" target="_blank">
     <img src="https://img.shields.io/badge/Portfolio-FF6B35?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Portfolio" />
   </a>
   <a href="https://www.linkedin.com/in/nikhilpahujaa" target="_blank">

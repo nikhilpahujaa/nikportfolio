@@ -13,7 +13,7 @@ export const identity = {
   phone: "+91 9821078067",
   github: "https://github.com/nikhilpahujaa",
   linkedin: "https://www.linkedin.com/in/nikhilpahujaa",
-  portfolio: "https://nikportfolio.vercel.app/",
+  portfolio: "https://nikportfoliooo.vercel.app/",
 } as const;
 
 export const roles = [
