@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Nikhil Pahuja — Backend & AI Engineer specializing in production-grade AI-integrated platforms, cloud-native APIs, and scalable backend systems.">
+  <title>Nikhil Pahuja — Backend & AI Engineer</title>
+  <link rel="icon" type="image/svg+xml" href="portfolio/app/icon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Space Grotesk', 'sans-serif'],
+            body: ['DM Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #09090B;
+      color: #FAFAFA;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #FFFFFF 0%, #93C5FD 50%, #2563EB 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .glass-card {
+      background: rgba(24, 24, 27, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(63, 63, 70, 0.5);
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* Typing cursor */
+    .typing-cursor::after {
+      content: '|';
+      color: #2563EB;
+      margin-left: 1px;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .typing-cursor::after {
+        animation: none;
+      }
+    }
+
+    /* Nav link underline */
+    .nav-link {
+      position: relative;
+      color: #A1A1AA;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #FAFAFA;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #2563EB;
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Floating nav */
+    .floating-nav {
+      background: rgba(9, 9, 11, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(63, 63, 70, 0.4);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .floating-nav.scrolled {
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Timeline */
+    .tl-item {
+      position: relative;
+      padding-left: 1.75rem;
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #2563EB;
+      box-shadow: 0 0 8px rgba(37, 99, 235, 0.6);
+    }
+
+    .tl-item::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 18px;
+      width: 2px;
+      height: calc(100% + 24px);
+      background: linear-gradient(to bottom, rgba(37, 99, 235, 0.35), transparent);
+    }
+
+    .tl-item:last-child::after {
+      display: none;
+    }
+
+    /* Project card hover */
+    .proj-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .proj-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 32px rgba(37, 99, 235, 0.12);
+      border-color: rgba(37, 99, 235, 0.38) !important;
+    }
+
+    /* Skill badge */
+    .badge {
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      color: #93C5FD;
+      padding: 0.2rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-family: 'JetBrains Mono', monospace;
+      display: inline-block;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .badge:hover {
+      background: rgba(37, 99, 235, 0.16);
+      border-color: rgba(37, 99, 235, 0.35);
+    }
+
+    /* Status dot pulse */
+    .pulse-dot {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.35
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pulse-dot {
+        animation: none;
+      }
+    }
+
+    /* Scroll indicator bounce */
+    .bounce {
+      animation: bounce 2s ease infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(6px)
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bounce {
+        animation: none;
+      }
+    }
+
+    /* Mobile menu */
+    #mob-menu {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+    #mob-menu.open {
+      max-height: 420px;
+      opacity: 1;
+    }
+
+    /* Focus ring */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid #2563EB;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* Glow blob */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(60px);
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #60A5FA;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-label span {
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: #2563EB;
+    }
+
+    /* Placeholder image box */
+    .img-placeholder {
+      background: rgba(37, 99, 235, 0.06);
+      border: 2px dashed rgba(37, 99, 235, 0.25);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: rgba(37, 99, 235, 0.5);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      min-height: 180px;
+    }
+  </style>
+</head>
+
+<body class="bg-[#09090B] text-[#FAFAFA] overflow-x-hidden">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav id="navbar"
+    class="floating-nav fixed top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 z-50 rounded-2xl px-5 py-3">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#home" class="font-heading font-bold text-lg tracking-tight cursor-pointer flex items-center gap-2">
+        <span class="gradient-text">NP</span>
+        <span class="text-zinc-600 font-mono text-sm hidden sm:inline">.dev</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-7">
+        <a href="#about" class="nav-link text-sm font-medium cursor-pointer">About</a>
+        <a href="#skills" class="nav-link text-sm font-medium cursor-pointer">Skills</a>
+        <a href="#experience" class="nav-link text-sm font-medium cursor-pointer">Experience</a>
+        <a href="#projects" class="nav-link text-sm font-medium cursor-pointer">Projects</a>
+        <a href="#contact" class="nav-link text-sm font-medium cursor-pointer">Contact</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="mailto:nikhilpahuja75@gmail.com"
+          class="hidden md:flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-xl transition-colors duration-200 cursor-pointer">
+          <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+          </svg>
+          Hire Me
+        </a>
+        <button id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false"
+          class="md:hidden p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors cursor-pointer">
+          <svg id="ham-icon" aria-hidden="true" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mob-menu">
+      <div class="mt-3 pt-3 border-t border-zinc-800 flex flex-col gap-1 pb-1">
+        <a href="#about"
+          class="mob-link text-zinc-300 hover:text-white px-3 py-2 rounded-xl hover:bg-zinc-800 text-sm font-medium transition-colors cursor-pointer">About</a>
+        <a href="#skills"
+          class="mob-link text-zinc-300 hover:text-white px-3 py-2 rounded-xl hover:bg-zinc-800 text-sm font-medium transition-colors cursor-pointer">Skills</a>
+        <a href="#experience"
+          class="mob-link text-zinc-300 hover:text-white px-3 py-2 rounded-xl hover:bg-zinc-800 text-sm font-medium transition-colors cursor-pointer">Experience</a>
+        <a href="#projects"
+          class="mob-link text-zinc-300 hover:text-white px-3 py-2 rounded-xl hover:bg-zinc-800 text-sm font-medium transition-colors cursor-pointer">Projects</a>
+        <a href="#contact"
+          class="mob-link text-zinc-300 hover:text-white px-3 py-2 rounded-xl hover:bg-zinc-800 text-sm font-medium transition-colors cursor-pointer">Contact</a>
+        <a href="mailto:nikhilpahuja75@gmail.com"
+          class="mt-2 flex justify-center bg-blue-600 text-white text-sm font-medium px-4 py-2.5 rounded-xl cursor-pointer">Hire
+          Me</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="home"
+    class="hero-grid relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-28 pb-20">
+    <div class="blob w-[600px] h-[600px] top-1/4 left-1/2 -translate-x-1/2" style="background:rgba(37,99,235,0.09);">
+    </div>
+    <div class="blob w-80 h-80 bottom-10 right-10" style="background:rgba(37,99,235,0.06);"></div>
+
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <!-- Availability badge -->
+      <div
+        class="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-800 rounded-full px-4 py-1.5 text-sm text-zinc-400 mb-8">
+        <span class="pulse-dot w-2 h-2 rounded-full bg-green-500 inline-block flex-shrink-0"></span>
+        Available for opportunities &nbsp;·&nbsp; Gurgaon, India
+      </div>
+
+      <!-- Name -->
+      <h1
+        class="font-heading font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.05] mb-6 tracking-tight">
+        <span class="gradient-text">Nikhil</span><br>
+        <span class="text-white">Pahuja</span>
+      </h1>
+
+      <!-- Typing role -->
+      <div class="font-mono text-blue-400 text-base sm:text-lg mb-6 h-7">
+        <span class="text-zinc-600">$ role=</span><span id="typing-text" class="typing-cursor">Backend Developer</span>
+      </div>
+
+      <!-- Tagline -->
+      <p class="text-zinc-400 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+        Building <span class="text-white font-medium">production-grade AI-integrated platforms</span> and
+        <span class="text-white font-medium">cloud-native APIs</span>
+        shipped on Azure with real traffic across multi-platform SaaS products.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-3 justify-center items-center mb-14">
+        <a href="#projects"
+          class="w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium px-7 py-3.5 rounded-xl transition-all duration-200 cursor-pointer shadow-lg shadow-blue-950/40">
+          <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+          </svg>
+          View Projects
+        </a>
+        <a href="#contact"
+          class="w-full sm:w-auto flex items-center justify-center gap-2 glass-card hover:border-zinc-500 text-white font-medium px-7 py-3.5 rounded-xl transition-all duration-200 cursor-pointer">
+          <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+          </svg>
+          Get in Touch
+        </a>
+        <a href="https://github.com/nikhilpahujaa" target="_blank" rel="noopener noreferrer"
+          class="w-full sm:w-auto flex items-center justify-center gap-2 text-zinc-400 hover:text-white font-medium px-6 py-3.5 rounded-xl transition-colors duration-200 cursor-pointer border border-transparent hover:border-zinc-700">
+          <svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+          GitHub
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-3 max-w-xs mx-auto">
+        <div class="glass-card rounded-2xl p-4 text-center">
+          <div class="font-heading font-bold text-2xl text-white">2+</div>
+          <div class="text-zinc-500 text-xs mt-0.5 font-mono">Years Exp</div>
+        </div>
+        <div class="glass-card rounded-2xl p-4 text-center">
+          <div class="font-heading font-bold text-2xl text-white">2</div>
+          <div class="text-zinc-500 text-xs mt-0.5 font-mono">Projects</div>
+        </div>
+        <div class="glass-card rounded-2xl p-4 text-center">
+          <div class="font-heading font-bold text-2xl text-white">2</div>
+          <div class="text-zinc-500 text-xs mt-0.5 font-mono">Companies</div>
+        </div>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="mt-14 bounce">
+        <a href="#about"
+          class="inline-flex flex-col items-center gap-1.5 text-zinc-600 hover:text-zinc-400 transition-colors cursor-pointer">
+          <span class="text-xs font-mono">scroll</span>
+          <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about" class="py-24 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal">
+        <div class="section-label"><span></span>01. ABOUT</div>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-white mb-12">Who I Am</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div class="reveal">
+          <p class="text-zinc-300 text-lg leading-relaxed mb-5">
+            Backend Engineer with <span class="text-white font-semibold">2+ years of experience</span> building
+            scalable distributed systems and high-performance, real-time applications.
+          </p>
+          <p class="text-zinc-400 leading-relaxed mb-5">
+            My focus sits at the intersection of <span class="text-white font-medium">robust architectural design</span>
+            and
+            efficient data processing — specialising in Node.js, FastAPI, and Python, shipping
+            Dockerized microservices on Azure with real traffic across multi-platform SaaS products.
+          </p>
+          <p class="text-zinc-400 leading-relaxed mb-8">
+            Currently deep in the build at <span class="text-white">Shephertz, Gurgaon</span> — crafting
+            AI-powered platforms across WAnywhere, SocialAnywhere, and CloudOptimiser, where
+            every API ships with real consequences.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="mailto:nikhilpahuja75@gmail.com"
+              class="flex items-center gap-2 text-zinc-400 hover:text-blue-400 transition-colors duration-200 cursor-pointer">
+              <svg aria-hidden="true" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+              </svg>
+              <span class="text-sm">nikhilpahuja75@gmail.com</span>
+            </a>
+            <a href="https://www.linkedin.com/in/nikhilpahujaa" target="_blank" rel="noopener noreferrer"
+              class="flex items-center gap-2 text-zinc-400 hover:text-blue-400 transition-colors duration-200 cursor-pointer">
+              <svg aria-hidden="true" class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+              <span class="text-sm">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal flex flex-col gap-4">
+          <div class="glass-card rounded-2xl p-5">
+            <div class="text-zinc-500 text-xs font-mono uppercase tracking-wider mb-2">Primary Stack</div>
+            <div class="font-heading font-semibold text-lg text-white">JavaScript / Node.js / Python</div>
+            <p class="text-zinc-500 text-sm mt-1">Where the backend magic happens — robust, async, and battle-tested in
+              production</p>
+          </div>
+          <div class="glass-card rounded-2xl p-5">
+            <div class="text-zinc-500 text-xs font-mono uppercase tracking-wider mb-2">Cloud &amp; DevOps</div>
+            <div class="font-heading font-semibold text-lg text-white">Azure / Docker / AWS</div>
+            <p class="text-zinc-500 text-sm mt-1">Containerised, deployed, and monitored — real traffic, real scale</p>
+          </div>
+          <div class="glass-card rounded-2xl p-5">
+            <div class="text-zinc-500 text-xs font-mono uppercase tracking-wider mb-2">Data Layer</div>
+            <div class="font-heading font-semibold text-lg text-white">PostgreSQL / MongoDB / Redis</div>
+            <p class="text-zinc-500 text-sm mt-1">Relational structure, document flexibility, and blazing-fast cache —
+              all three in the arsenal</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SKILLS ═══ -->
+  <section id="skills" class="py-24 px-4" style="background:rgba(24,24,27,0.4);">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal mb-12">
+        <div class="section-label"><span></span>02. SKILLS</div>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-white">Technical Arsenal</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- Languages -->
+        <div class="reveal glass-card rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-xl bg-blue-600/20 flex items-center justify-center flex-shrink-0">
+              <svg aria-hidden="true" class="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+              </svg>
+            </div>
+            <h3 class="font-heading font-semibold text-white">Languages</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge">JavaScript</span><span class="badge">Python</span><span class="badge">SQL</span>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="reveal glass-card rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-xl bg-blue-600/20 flex items-center justify-center flex-shrink-0">
+              <svg aria-hidden="true" class="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 0 0 3 3h7.5a3 3 0 0 0 3-3m-16.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z" />
+              </svg>
+            </div>
+            <h3 class="font-heading font-semibold text-white">Backend Frameworks</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge">Node.js</span><span class="badge">Express.js</span>
+            <span class="badge">FastAPI</span><span class="badge">REST APIs</span>
+            <span class="badge">JWT</span><span class="badge">OAuth 2.0</span>
+          </div>
+        </div>
+
+        <!-- Infrastructure -->
+        <div class="reveal glass-card rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-xl bg-blue-600/20 flex items-center justify-center flex-shrink-0">
+              <svg aria-hidden="true" class="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z" />
+              </svg>
+            </div>
+            <h3 class="font-heading font-semibold text-white">DevOps &amp; Tools</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge">Docker</span><span class="badge">Prometheus</span>
+            <span class="badge">Grafana</span><span class="badge">Azure</span>
+            <span class="badge">AWS</span><span class="badge">Git</span><span class="badge">Postman</span>
+          </div>
+        </div>
+
+        <!-- Databases -->
+        <div class="reveal glass-card rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-xl bg-blue-600/20 flex items-center justify-center flex-shrink-0">
+              <svg aria-hidden="true" class="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 2.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125m0 5.625c0 2.278 3.694 4.125 8.25 4.125s8.25-1.847 8.25-4.125" />
+              </svg>
+            </div>
+            <h3 class="font-heading font-semibold text-white">Databases</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge">MongoDB</span><span class="badge">PostgreSQL</span>
+            <span class="badge">MySQL</span><span class="badge">Firebase Firestore</span>
+            <span class="badge">Redis</span>
+          </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="reveal glass-card rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-xl bg-blue-600/20 flex items-center justify-center flex-shrink-0">
+              <svg aria-hidden="true" class="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
+              </svg>
+            </div>
+            <h3 class="font-heading font-semibold text-white">Frontend</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge">React.js</span><span class="badge">Next.js</span><span class="badge">Tailwind CSS</span><span class="badge">Framer Motion</span>
+          </div>
+        </div>
+
+        <!-- AI & ML — accent card -->
+        <div class="reveal rounded-2xl p-6"
+          style="background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(24,24,27,0.85));border:1px solid rgba(37,99,235,0.25);">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-xl bg-blue-600/30 flex items-center justify-center flex-shrink-0">
+              <svg aria-hidden="true" class="w-4 h-4 text-blue-300" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+              </svg>
+            </div>
+            <h3 class="font-heading font-semibold text-white">AI &amp; ML</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge"
+              style="background:rgba(37,99,235,0.15);border-color:rgba(37,99,235,0.3);">LangChain</span>
+            <span class="badge" style="background:rgba(37,99,235,0.15);border-color:rgba(37,99,235,0.3);">LLM
+              Integration</span>
+            <span class="badge" style="background:rgba(37,99,235,0.15);border-color:rgba(37,99,235,0.3);">Prompt
+              Engineering</span>
+            <span class="badge"
+              style="background:rgba(37,99,235,0.15);border-color:rgba(37,99,235,0.3);">scikit-learn</span>
+            <span class="badge"
+              style="background:rgba(37,99,235,0.15);border-color:rgba(37,99,235,0.3);">statsmodels</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EXPERIENCE ═══ -->
+  <section id="experience" class="py-24 px-4">
+    <div class="max-w-3xl mx-auto">
+      <div class="reveal mb-12">
+        <div class="section-label"><span></span>03. EXPERIENCE</div>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-white">Work History</h2>
+      </div>
+
+      <div class="space-y-12">
+
+        <!-- Shephertz -->
+        <div class="reveal tl-item pb-12">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-heading font-bold text-xl text-white">Backend &amp; AI Engineer</h3>
+              <div class="text-blue-400 font-medium mt-1">Shephertz, Gurgaon</div>
+            </div>
+            <span
+              class="text-zinc-500 text-xs font-mono bg-zinc-900 border border-zinc-800 px-3 py-1 rounded-full self-start whitespace-nowrap">July
+              2024 — Present</span>
+          </div>
+          <div class="text-zinc-600 text-xs font-mono mb-3">WAnywhere · SocialAnywhere · CloudOptimiser</div>
+          <ul class="space-y-2.5">
+            <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+              Architected and shipped production REST APIs in Node.js, Express, MongoDB, and PostgreSQL for enterprise
+              SaaS — locked down with JWT auth, RBAC, and Dockerized deployments carrying real user traffic.
+            </li>
+            <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+              Squeezed <span class="text-zinc-200">20%</span> more performance out of backend and database layers
+              through targeted optimisation and surgical code refactoring — measurable impact, zero guesswork.
+            </li>
+            <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+              Built Docker-based CRUD microservice scaffolding tools for Node.js + MongoDB and FastAPI + MySQL, cutting
+              new-service spin-up time dramatically across the engineering team.
+            </li>
+            <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+              Engineered cross-platform APIs and scheduling workflows handling publishing pipelines for Instagram,
+              Facebook, Twitter/X, LinkedIn, and Reddit — five platforms, one coherent system.
+            </li>
+            <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+              Designed and wired an AI content generation pipeline powered by OpenAI GPT-4, Groq (Llama 3), and
+              Stability AI — with prompt engineering and multi-model fallback so the system never goes dark.
+            </li>
+            <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+              Built FastAPI-based scheduling and analytics APIs that give the social publishing engine both its rhythm
+              and its memory.
+            </li>
+            <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+              Built cloud monitoring and cost optimisation APIs for Azure and AWS that improved resource utilisation by
+              <span class="text-zinc-200">~25%</span>; layered in ML-based cost forecasting using scikit-learn and
+              statsmodels so teams can see the bill before it arrives.
+            </li>
+            <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+              Contributed to a microservices architecture spanning Docker, Prometheus, Grafana, and Azure Pipelines —
+              improving deployment and observability efficiency by <span class="text-zinc-200">~30%</span> and turning
+              black-box infrastructure into a fully visible system.
+            </li>
+          </ul>
+        </div>
+
+        <!-- HERE Technologies -->
+        <div class="reveal tl-item">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+            <div>
+              <h3 class="font-heading font-bold text-xl text-white">Developer Intern</h3>
+              <div class="text-blue-400 font-medium mt-1">HERE Technologies, Remote</div>
+            </div>
+            <span
+              class="text-zinc-500 text-xs font-mono bg-zinc-900 border border-zinc-800 px-3 py-1 rounded-full self-start whitespace-nowrap">June
+              2023 — July 2023</span>
+          </div>
+          <ul class="space-y-2.5">
+            <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+              Built Python automation scripts and Scrapy-based web crawlers to extract clean, structured POI data from
+              the open web — turning raw noise into location intelligence.
+            </li>
+            <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span>
+              Processed, validated, and cleaned large datasets feeding directly into HERE's global location products —
+              because bad data costs more than no data.
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROJECTS ═══ -->
+  <section id="projects" class="py-24 px-4" style="background:rgba(24,24,27,0.4);">
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal mb-12">
+        <div class="section-label"><span></span>04. PROJECTS</div>
+        <h2 class="font-heading font-bold text-3xl sm:text-4xl text-white">Build Log</h2>
+        <p class="text-zinc-400 mt-3 max-w-lg">Production-grade expeditions — built for performance, scale, and AI integration.</p>
+      </div>
+
+      <!-- AriGato — Row 1 (Featured full width) -->
+      <div class="reveal proj-card glass-card rounded-2xl p-6 sm:p-8 mb-6">
+        <div class="flex flex-col lg:flex-row gap-8">
+          <div class="lg:w-[450px] w-full flex-shrink-0 flex items-center justify-center">
+            <div class="project-preview w-full">
+              <div class="project-preview__bar">
+                <span class="project-preview__dot bg-[#ff5f56]"></span>
+                <span class="project-preview__dot bg-[#ffbd2e]"></span>
+                <span class="project-preview__dot bg-[#27c93f]"></span>
+              </div>
+              <div class="project-preview__shot bg-zinc-950/20 flex items-center justify-center">
+                <img src="portfolio/media/projects/arigato.png" alt="AriGato" class="project-preview__img object-contain w-full h-full" />
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 min-w-0 flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-4">
+                <span class="text-xs font-mono text-blue-300 bg-blue-600/10 border border-blue-600/20 px-3 py-1 rounded-full">★ Featured</span>
+                <span class="text-xs text-zinc-500 font-mono">2024</span>
+              </div>
+              <h3 class="font-heading font-bold text-2xl text-white mb-1">AriGato</h3>
+              <p class="text-blue-400 italic text-sm mb-3">Learn Japanese with AI</p>
+              <p class="text-zinc-400 leading-relaxed mb-5 text-sm sm:text-base">
+                An interactive Japanese learning platform (JLPT N5–N1) with AI-powered pronunciation practice, spaced repetition flashcards, and gamification features including XP system and achievement badges.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-3 mb-5">
+                <div class="flex-1 rounded-xl p-3.5" style="background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.15);">
+                  <div class="text-zinc-500 text-xs font-mono mb-1.5">AI Speech</div>
+                  <div class="text-white text-sm">AI-powered pronunciation evaluation via Web Speech API</div>
+                </div>
+                <div class="flex-1 rounded-xl p-3.5" style="background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.15);">
+                  <div class="text-zinc-500 text-xs font-mono mb-1.5">Gamification</div>
+                  <div class="text-white text-sm">XP accumulation system, flashcard cycles, and achievement badges</div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-zinc-800">
+              <div class="flex flex-wrap gap-2">
+                <span class="badge">React</span><span class="badge">TypeScript</span>
+                <span class="badge">Vite</span><span class="badge">Tailwind CSS</span>
+                <span class="badge">Shadcn/ui</span>
+              </div>
+              <a href="https://arigatoo.vercel.app/" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors duration-200 cursor-pointer">
+                View Live
+                <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: DataFlow & FinSight (Side-by-side) -->
+      <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <!-- DataFlow -->
+        <div class="proj-card glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <div class="w-full flex-shrink-0 flex items-center justify-center mb-6">
+              <div class="project-preview w-full">
+                <div class="project-preview__bar">
+                  <span class="project-preview__dot bg-[#ff5f56]"></span>
+                  <span class="project-preview__dot bg-[#ffbd2e]"></span>
+                  <span class="project-preview__dot bg-[#27c93f]"></span>
+                </div>
+                <div class="project-preview__shot bg-zinc-950/20 flex items-center justify-center">
+                  <img src="portfolio/media/projects/dataflow.png" alt="DataFlow" class="project-preview__img object-contain w-full h-full" />
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+              <span class="text-xs font-mono text-blue-300 bg-blue-600/10 border border-blue-600/20 px-3 py-1 rounded-full">★ Featured</span>
+              <span class="text-xs text-zinc-500 font-mono">2024</span>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-white mb-1">DataFlow</h3>
+            <p class="text-blue-400 italic text-sm mb-3">Database Migration Studio</p>
+            <p class="text-zinc-400 leading-relaxed mb-5 text-sm sm:text-base">
+              Migrating databases is painful. DataFlow makes it surgical. A full-stack tool that automates migration from MySQL to PostgreSQL and MongoDB — handling schema analysis, type mapping, and relationship preservation so nothing gets lost in translation. Backed by a production-ready FastAPI engine with configurable migration workflows.
+            </p>
+            <div class="flex flex-col gap-3 mb-5">
+              <div class="rounded-xl p-4" style="background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.15);">
+                <div class="text-zinc-500 text-xs font-mono mb-1.5">Migration Engine</div>
+                <div class="text-white text-sm">Automated schema analysis, type mapping, and relationship preservation — no data left behind</div>
+              </div>
+              <div class="rounded-xl p-4" style="background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.15);">
+                <div class="text-zinc-500 text-xs font-mono mb-1.5">Backend</div>
+                <div class="text-white text-sm">Production-ready FastAPI REST APIs driving configurable, repeatable migration workflows</div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-zinc-800 mt-auto">
+            <div class="flex flex-wrap gap-2">
+              <span class="badge">React</span><span class="badge">Tailwind CSS</span>
+              <span class="badge">FastAPI</span><span class="badge">Python</span>
+              <span class="badge">MySQL</span>
+            </div>
+            <a href="https://datafloww.vercel.app/" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors duration-200 cursor-pointer">
+              View Live
+              <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- FinSight -->
+        <div class="proj-card glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <div class="w-full flex-shrink-0 flex items-center justify-center mb-6">
+              <div class="project-preview w-full">
+                <div class="project-preview__bar">
+                  <span class="project-preview__dot bg-[#ff5f56]"></span>
+                  <span class="project-preview__dot bg-[#ffbd2e]"></span>
+                  <span class="project-preview__dot bg-[#27c93f]"></span>
+                </div>
+                <div class="project-preview__shot bg-zinc-950/20 flex items-center justify-center">
+                  <img src="portfolio/media/projects/finsight.png" alt="FinSight" class="project-preview__img object-contain w-full h-full" />
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+              <span class="text-xs font-mono text-blue-300 bg-blue-600/10 border border-blue-600/20 px-3 py-1 rounded-full">★ Featured</span>
+              <span class="text-xs text-zinc-500 font-mono">2024</span>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-white mb-1">FinSight</h3>
+            <p class="text-blue-400 italic text-sm mb-3">Enterprise Financial Management Dashboard</p>
+            <p class="text-zinc-400 leading-relaxed mb-5 text-sm sm:text-base">
+              An enterprise-grade financial management dashboard with real-time transaction tracking, advanced analytics, and role-based access control. Features interactive charts, soft-delete audit trails, and secure JWT authentication.
+            </p>
+            <div class="flex flex-col gap-3 mb-5">
+              <div class="rounded-xl p-4" style="background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.15);">
+                <div class="text-zinc-500 text-xs font-mono mb-1.5">Analytics</div>
+                <div class="text-white text-sm">Interactive financial charts and real-time transaction tracking</div>
+              </div>
+              <div class="rounded-xl p-4" style="background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.15);">
+                <div class="text-zinc-500 text-xs font-mono mb-1.5">Security</div>
+                <div class="text-white text-sm">Role-based access control (RBAC) with JWT auth and audit trails</div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-zinc-800 mt-auto">
+            <div class="flex flex-wrap gap-2">
+              <span class="badge">React</span><span class="badge">TypeScript</span>
+              <span class="badge">Vite</span><span class="badge">Tailwind CSS</span>
+              <span class="badge">Recharts</span><span class="badge">Node.js</span>
+              <span class="badge">Express</span>
+            </div>
+            <a href="https://finsighttt.vercel.app" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors duration-200 cursor-pointer">
+              View Live
+              <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ExcelHire — Row 3 (Featured full width) -->
+      <div class="reveal proj-card glass-card rounded-2xl p-6 sm:p-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+          <div class="lg:w-[450px] w-full flex-shrink-0 flex items-center justify-center">
+            <div class="project-preview w-full">
+              <div class="project-preview__bar">
+                <span class="project-preview__dot bg-[#ff5f56]"></span>
+                <span class="project-preview__dot bg-[#ffbd2e]"></span>
+                <span class="project-preview__dot bg-[#27c93f]"></span>
+              </div>
+              <div class="project-preview__shot bg-zinc-950/20 flex items-center justify-center">
+                <img src="portfolio/media/projects/excelhire.png" alt="ExcelHire" class="project-preview__img object-contain w-full h-full" />
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 min-w-0 flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-4">
+                <span class="text-xs font-mono text-blue-300 bg-blue-600/10 border border-blue-600/20 px-3 py-1 rounded-full">★ Featured</span>
+                <span class="text-xs text-zinc-500 font-mono">2024</span>
+              </div>
+              <h3 class="font-heading font-bold text-2xl text-white mb-1">ExcelHire</h3>
+              <p class="text-blue-400 italic text-sm mb-3">AI-Powered Excel Interview Platform</p>
+              <p class="text-zinc-400 leading-relaxed mb-5 text-sm sm:text-base">
+                What if your interview platform was as smart as your best interviewer? ExcelHire uses OpenAI GPT-4 to run conversational Excel skill assessments — adaptive questions, real-time scoring, and LLM-generated feedback. Secure APIs for auth, interviews, evaluation, and reporting. Fully Dockerized and ready to scale.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-3 mb-5">
+                <div class="flex-1 rounded-xl p-3.5" style="background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.15);">
+                  <div class="text-zinc-500 text-xs font-mono mb-1.5">AI Engine</div>
+                  <div class="text-white text-sm">GPT-4 drives adaptive skill assessment and automated scoring — interviews that think on their feet</div>
+                </div>
+                <div class="flex-1 rounded-xl p-3.5" style="background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.15);">
+                  <div class="text-zinc-500 text-xs font-mono mb-1.5">Deployment</div>
+                  <div class="text-white text-sm">Fully Dockerized full-stack app — consistent, isolated, and dead easy to reproduce anywhere</div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-zinc-800">
+              <div class="flex flex-wrap gap-2">
+                <span class="badge">React</span><span class="badge">TypeScript</span>
+                <span class="badge">Tailwind CSS</span><span class="badge">FastAPI</span>
+                <span class="badge">PostgreSQL</span><span class="badge">Docker</span>
+              </div>
+              <a href="https://excelhire.vercel.app/" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors duration-200 cursor-pointer">
+                View Live
+                <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EDUCATION ═══ -->
+  <section id="education" class="py-24 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-14">
+
+        <!-- Higher Education -->
+        <div>
+          <div class="reveal mb-8">
+            <div class="section-label"><span></span>05. EDUCATION</div>
+            <h2 class="font-heading font-bold text-3xl text-white">Academic Background</h2>
+          </div>
+          <div class="reveal glass-card rounded-2xl p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-xl bg-blue-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg aria-hidden="true" class="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 3.741-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-heading font-bold text-lg text-white">Bachelor of Engineering in Computer Science</h3>
+                <div class="text-blue-400 font-medium text-sm mt-1">UPES, Dehradun</div>
+                <div class="flex items-center gap-3 mt-2 flex-wrap">
+                  <span class="text-zinc-500 text-sm font-mono">2020 — 2024</span>
+                  <span class="text-zinc-700">·</span>
+                  <span class="text-zinc-400 text-sm">8.02 CGPA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schooling -->
+        <div>
+          <div class="reveal mb-8">
+            <div class="section-label"><span></span>SCHOOLING</div>
+            <h2 class="font-heading font-bold text-3xl text-white">Early Education</h2>
+          </div>
+          <div class="space-y-4">
+            <div class="reveal glass-card rounded-2xl p-5">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-blue-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg aria-hidden="true" class="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-heading font-semibold text-white text-sm">12th Grade</h3>
+                  <div class="text-zinc-500 text-xs mt-1.5">Lions Public School, Gurgaon</div>
+                  <div class="flex items-center gap-3 mt-1 flex-wrap">
+                    <span class="text-zinc-600 text-xs font-mono">2019 — 2020</span>
+                    <span class="text-zinc-700">·</span>
+                    <span class="text-zinc-400 text-xs">80.4%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="reveal glass-card rounded-2xl p-5">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-blue-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg aria-hidden="true" class="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-heading font-semibold text-white text-sm">10th Grade</h3>
+                  <div class="text-zinc-500 text-xs mt-1.5">Lions Public School, Gurgaon</div>
+                  <div class="flex items-center gap-3 mt-1 flex-wrap">
+                    <span class="text-zinc-600 text-xs font-mono">2017 — 2018</span>
+                    <span class="text-zinc-700">·</span>
+                    <span class="text-zinc-400 text-xs">71.6%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact" class="py-24 px-4" style="background:rgba(24,24,27,0.4);">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="reveal">
+        <div class="section-label justify-center"><span></span>06. CONTACT<span></span></div>
+        <h2 class="font-heading font-bold text-4xl sm:text-5xl text-white mb-5">
+          Let's Build Something<br>
+          <span class="gradient-text">Together</span>
+        </h2>
+        <p class="text-zinc-400 text-lg leading-relaxed mb-12">
+          Open to full-time roles, freelance projects, and genuinely interesting engineering
+          problems. Got something worth building? Drop a message and let's talk.
+        </p>
+      </div>
+
+      <div class="reveal grid sm:grid-cols-2 gap-4 mb-10">
+        <a href="mailto:nikhilpahuja75@gmail.com"
+          class="glass-card rounded-2xl p-5 flex items-center gap-4 hover:border-blue-600/40 transition-all duration-200 cursor-pointer text-left group">
+          <div
+            class="w-12 h-12 rounded-xl bg-blue-600/20 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600/30 transition-colors">
+            <svg aria-hidden="true" class="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+            </svg>
+          </div>
+          <div class="min-w-0">
+            <div class="text-zinc-500 text-xs font-mono uppercase tracking-wider">Email</div>
+            <div class="text-white text-sm font-medium mt-0.5 truncate">nikhilpahuja75@gmail.com</div>
+          </div>
+        </a>
+
+        <a href="tel:+919821078067"
+          class="glass-card rounded-2xl p-5 flex items-center gap-4 hover:border-blue-600/40 transition-all duration-200 cursor-pointer text-left group">
+          <div
+            class="w-12 h-12 rounded-xl bg-blue-600/20 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600/30 transition-colors">
+            <svg aria-hidden="true" class="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+            </svg>
+          </div>
+          <div>
+            <div class="text-zinc-500 text-xs font-mono uppercase tracking-wider">Phone</div>
+            <div class="text-white text-sm font-medium mt-0.5">+91 9821078067</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="reveal flex flex-wrap justify-center gap-3">
+        <a href="https://github.com/nikhilpahujaa" target="_blank" rel="noopener noreferrer"
+          class="flex items-center gap-2.5 glass-card hover:border-zinc-600 text-zinc-400 hover:text-white px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer">
+          <svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/nikhilpahujaa" target="_blank" rel="noopener noreferrer"
+          class="flex items-center gap-2.5 glass-card hover:border-zinc-600 text-zinc-400 hover:text-white px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer">
+          <svg aria-hidden="true" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://nikportfolio.vercel.app/" target="_blank" rel="noopener noreferrer"
+          class="flex items-center gap-2.5 glass-card hover:border-zinc-600 text-zinc-400 hover:text-white px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer">
+          <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253M3 12a8.959 8.959 0 0 0 .284 2.253" />
+          </svg>
+          Portfolio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="py-7 px-4 border-t border-zinc-900">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="text-zinc-600 text-sm font-mono">© 2025 Nikhil Pahuja. All rights reserved.</div>
+      <div class="flex items-center gap-2 text-zinc-700 text-xs font-mono">
+        <span class="w-1.5 h-1.5 rounded-full bg-green-600 inline-block"></span>
+        Open to opportunities
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Scroll reveal ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 55);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ── Typing animation ──
+    const roles = ['Backend Developer', 'AI Engineer', 'Node.js Developer', 'Python Developer', 'APIs & Microservices'];
+    let rIdx = 0, cIdx = 0, deleting = false;
+    const typingEl = document.getElementById('typing-text');
+
+    function type() {
+      const word = roles[rIdx];
+      if (deleting) {
+        typingEl.textContent = word.substring(0, cIdx - 1);
+        cIdx--;
+        if (cIdx === 0) { deleting = false; rIdx = (rIdx + 1) % roles.length; setTimeout(type, 450); return; }
+        setTimeout(type, 55);
+      } else {
+        typingEl.textContent = word.substring(0, cIdx + 1);
+        cIdx++;
+        if (cIdx === word.length) { deleting = true; setTimeout(type, 2400); return; }
+        setTimeout(type, 85);
+      }
+    }
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setTimeout(type, 900);
+    }
+
+    // ── Navbar scroll + active section ──
+    const navbar = document.getElementById('navbar');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const onScroll = () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+      let current = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 130) current = s.id; });
+      navLinks.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // ── Hamburger ──
+    const hamburger = document.getElementById('hamburger');
+    const mobMenu = document.getElementById('mob-menu');
+
+    hamburger.addEventListener('click', () => {
+      const open = mobMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', open);
+    });
+    document.querySelectorAll('.mob-link').forEach(l => {
+      l.addEventListener('click', () => {
+        mobMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+
+</html>
