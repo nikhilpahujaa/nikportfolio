@@ -1,4 +1,8 @@
 <div align="center">
+  <img src="./mushashi.gif" alt="Header" width="100%" />
+</div>
+
+<div align="center">
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=28&duration=3000&pause=1000&color=2563EB&center=true&vCenter=true&width=600&lines=Backend+%26+AI+Engineer;Node.js+Developer;Python+Developer;APIs+%26+Microservices" alt="Typing SVG" />
   </a>
@@ -151,14 +155,7 @@ Runs adaptive interview sessions with real-time scoring, secure authentication A
 **Bachelor of Engineering in Computer Science**
 UPES, Dehradun &nbsp;·&nbsp; 2020 – 2024 &nbsp;·&nbsp; CGPA: 8.02
 
----
 
-## 🏫 Early Education
-
-- **12th Grade** — *Lions Public School, Gurgaon* `2019 — 2020` &nbsp;·&nbsp; **80.4%**
-- **10th Grade** — *Lions Public School, Gurgaon* `2017 — 2018` &nbsp;·&nbsp; **71.6%**
-
----
 
 <div align="center">
   <h3>💡 "Building scalable systems, one line of code at a time"</h3>
